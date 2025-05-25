@@ -8,8 +8,7 @@ import 'interceptor.dart';
 class SVBaseClient implements ApiClient {
   final Dio _dio;
 
-  SVBaseClient(AppConfig appConfig)
-    : _dio = Dio(BaseOptions(baseUrl: appConfig.serverApiUrl)) {
+  SVBaseClient(AppConfig appConfig) : _dio = Dio(BaseOptions(baseUrl: appConfig.serverApiUrl)) {
     _dio.interceptors.add(DioInterceptor());
   }
 

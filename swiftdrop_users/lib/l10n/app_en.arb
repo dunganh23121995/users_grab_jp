@@ -11,5 +11,8 @@
   "sign_up_with_email": "Sign up with email",
   "or_continue_with": "or continue with",
   "google": "Google",
-  "hint_email": "email@domain.com"
+  "hint_email": "email@domain.com",
+  "email_invalid": "Email invalid",
+  "password_need_fill": "Password cannot be blank",
+  "password_need_greater_than_six" : "Password must be at least 6 characters long"
 }

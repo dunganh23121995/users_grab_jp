@@ -6,11 +6,10 @@ abstract class AuthRemoteDataSource {
   Future<LoginResponseDto> login(LoginRequestDto request);
 }
 
-class AuthRemoteDataSourceImpl implements AuthRemoteDataSource{
+class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   final ApiClient apiClient;
 
   AuthRemoteDataSourceImpl(this.apiClient);
-
 
   @override
   Future<LoginResponseDto> login(LoginRequestDto request) async {

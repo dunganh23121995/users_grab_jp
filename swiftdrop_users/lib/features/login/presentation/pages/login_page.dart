@@ -2,11 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:swiftdrop_users/core/theme/app_button_theme.dart';
+import 'package:swiftdrop_users/core/widget/text_field_email.dart';
+import 'package:swiftdrop_users/core/widget/text_field_password.dart';
 
 import '../../../../generated/assets.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  final TextEditingController usernameController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -19,10 +29,7 @@ class LoginScreen extends StatelessWidget {
           Image.asset(Assets.imagesBellNotification),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8),
-            child: CircleAvatar(
-              radius: 12,
-              backgroundColor: Colors.grey.shade300,
-            ),
+            child: CircleAvatar(radius: 12, backgroundColor: Colors.grey.shade300),
           ),
         ],
       ),
@@ -38,31 +45,25 @@ class LoginScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 24),
-              Text(
-                AppLocalizations.of(context)!.login,
-                style: Theme.of(context).textTheme.labelLarge,
+              Text(AppLocalizations.of(context)!.login, style: Theme.of(context).textTheme.labelLarge),
+              const SizedBox(height: 12),
+              TextFieldEmail(
+                controller: usernameController,
+                hintText: AppLocalizations.of(context)!.user_id,
+                invalidErrorText: AppLocalizations.of(context)!.email_invalid,
               ),
               const SizedBox(height: 12),
-              TextField(
-                decoration: InputDecoration(
-                  hintText: AppLocalizations.of(context)!.user_id,
-                ),
-              ),
-              const SizedBox(height: 12),
-              TextField(
-                obscureText: true,
-                decoration: InputDecoration(
-                  hintText: AppLocalizations.of(context)!.password,
-                ),
+              TextFieldPassword(
+                controller: passwordController,
+                hintText: AppLocalizations.of(context)!.password,
+                tooShortErrorText: AppLocalizations.of(context)!.password_need_greater_than_six,
+                emptyErrorText: AppLocalizations.of(context)!.password_need_fill,
               ),
               const SizedBox(height: 16),
               SizedBox(
                 width: double.infinity,
                 height: 48,
-                child: ElevatedButton(
-                  onPressed: () {},
-                  child: Text(AppLocalizations.of(context)!.login),
-                ),
+                child: ElevatedButton(onPressed: () {}, child: Text(AppLocalizations.of(context)!.login)),
               ),
               const SizedBox(height: 20),
               Text(
@@ -71,17 +72,12 @@ class LoginScreen extends StatelessWidget {
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 32),
-              Text(
-                AppLocalizations.of(context)!.new_user_registration,
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
+              Text(AppLocalizations.of(context)!.new_user_registration, style: TextStyle(fontWeight: FontWeight.bold)),
               const SizedBox(height: 12),
               TextField(
                 decoration: InputDecoration(
                   hintText: AppLocalizations.of(context)!.hint_email,
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8),
-                  ),
+                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
                 ),
               ),
               const SizedBox(height: 16),
@@ -90,11 +86,7 @@ class LoginScreen extends StatelessWidget {
                 height: 48,
                 child: ElevatedButton(
                   onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                    textStyle: TextStyle(
-                      fontSize: 14,
-                    ),
-                  ),
+                  style: ElevatedButton.styleFrom(textStyle: TextStyle(fontSize: 14)),
                   child: Text(AppLocalizations.of(context)!.sign_up_with_email),
                 ),
               ),
@@ -114,10 +106,7 @@ class LoginScreen extends StatelessWidget {
                 width: double.infinity,
                 height: 48,
                 child: ElevatedButton.icon(
-                  style:
-                      Theme.of(
-                        context,
-                      ).extension<AppButtonThemes>()!.googleButtonTheme,
+                  style: Theme.of(context).extension<AppButtonThemes>()!.googleButtonTheme,
                   onPressed: () {},
                   icon: SvgPicture(SvgAssetLoader(Assets.svgsGoogle)),
                   label: Text(AppLocalizations.of(context)!.google),
@@ -133,15 +122,9 @@ class LoginScreen extends StatelessWidget {
         unselectedItemColor: Colors.grey,
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.confirmation_number_outlined),
-            label: '',
-          ),
+          BottomNavigationBarItem(icon: Icon(Icons.confirmation_number_outlined), label: ''),
           BottomNavigationBarItem(icon: Icon(Icons.person), label: ''),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.notifications_none),
-            label: '',
-          ),
+          BottomNavigationBarItem(icon: Icon(Icons.notifications_none), label: ''),
           BottomNavigationBarItem(icon: Icon(Icons.menu), label: ''),
         ],
       ),

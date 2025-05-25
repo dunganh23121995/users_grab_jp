@@ -6,7 +6,7 @@ part 'splash_state.dart';
 class SplashCubit extends Cubit<SplashState> {
   SplashCubit() : super(SplashInitial());
 
-  Future<void> loadStatusApplication()async{
+  Future<void> loadStatusApplication() async {
     await Future.delayed(Duration(seconds: 2));
     emit(SplashNavigateToLogin());
   }

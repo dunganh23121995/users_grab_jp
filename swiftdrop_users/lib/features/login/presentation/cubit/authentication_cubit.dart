@@ -3,9 +3,6 @@ import 'package:bloc/bloc.dart';
 import '../../../../core/authentication/domain/entities/user_entity.dart';
 import '../../../../core/authentication/domain/usecases/login_usecase.dart';
 
-
-
-
 part 'authentication_state.dart';
 
 class AuthenticationCubit extends Cubit<LoginState> {

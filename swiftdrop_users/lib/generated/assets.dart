@@ -18,5 +18,4 @@ class Assets {
   static const String svgsHome = 'assets/svgs/home.svg';
   static const String svgsMenu = 'assets/svgs/menu.svg';
   static const String svgsPersonal = 'assets/svgs/personal.svg';
-
 }

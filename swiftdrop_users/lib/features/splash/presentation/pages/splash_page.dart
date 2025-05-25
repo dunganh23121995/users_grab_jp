@@ -43,11 +43,7 @@ class _SplashScreenState extends State<SplashScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               // Hiển thị logo
-              Image.asset(
-                Assets.imagesUserLogoRemovebgPreview,
-                width: 120,
-                height: 120,
-              ),
+              Image.asset(Assets.imagesUserLogoRemovebgPreview, width: 120, height: 120),
               const SizedBox(height: 32),
               const CircularProgressIndicator(),
             ],

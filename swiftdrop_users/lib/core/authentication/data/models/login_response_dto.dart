@@ -7,9 +7,6 @@ class LoginResponseDto {
   LoginResponseDto({required this.token, required this.user});
 
   factory LoginResponseDto.fromJson(Map<String, dynamic> json) {
-    return LoginResponseDto(
-      token: json['token'],
-      user: UserEntity.fromJson(json['user']),
-    );
+    return LoginResponseDto(token: json['token'], user: UserEntity.fromJson(json['user']));
   }
 }
