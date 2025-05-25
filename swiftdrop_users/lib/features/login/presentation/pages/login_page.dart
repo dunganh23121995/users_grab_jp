@@ -1,79 +1,150 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../../../core/authentication/domain/usecases/login_usecase.dart';
-import '../../../../core/navigation/app_routes.dart';
-import '../../../../core/navigation/navigation_service.dart';
-import '../../../../injection_container/global_injector.dart';
-import '../cubit/authentication_cubit.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:swiftdrop_users/core/theme/app_button_theme.dart';
 
+import '../../../../generated/assets.dart';
 
 class LoginScreen extends StatelessWidget {
-  LoginScreen({super.key});
-  final LoginUseCase loginUseCase = getIt<LoginUseCase>();
+  const LoginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<AuthenticationCubit>(
-      create: (context) => AuthenticationCubit(loginUseCase: loginUseCase),
-      child: Scaffold(
-        appBar: AppBar(title: Text(AppLocalizations.of(context)!.login)),
-        body: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: LoginForm(),
+    return Scaffold(
+      appBar: AppBar(
+        leading: Image.asset(Assets.imagesDrawerMenu),
+        title: Text(AppLocalizations.of(context)!.grab_luggage_version),
+        centerTitle: true,
+        actions: [
+          Image.asset(Assets.imagesBellNotification),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8),
+            child: CircleAvatar(
+              radius: 12,
+              backgroundColor: Colors.grey.shade300,
+            ),
+          ),
+        ],
+      ),
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(24.0),
+          child: ListView(
+            children: [
+              Center(
+                child: Text(
+                  AppLocalizations.of(context)!.login_register_as_a_new_user,
+                  style: Theme.of(context).textTheme.titleMedium,
+                ),
+              ),
+              const SizedBox(height: 24),
+              Text(
+                AppLocalizations.of(context)!.login,
+                style: Theme.of(context).textTheme.labelLarge,
+              ),
+              const SizedBox(height: 12),
+              TextField(
+                decoration: InputDecoration(
+                  hintText: AppLocalizations.of(context)!.user_id,
+                ),
+              ),
+              const SizedBox(height: 12),
+              TextField(
+                obscureText: true,
+                decoration: InputDecoration(
+                  hintText: AppLocalizations.of(context)!.password,
+                ),
+              ),
+              const SizedBox(height: 16),
+              SizedBox(
+                width: double.infinity,
+                height: 48,
+                child: ElevatedButton(
+                  onPressed: () {},
+                  child: Text(AppLocalizations.of(context)!.login),
+                ),
+              ),
+              const SizedBox(height: 20),
+              Text(
+                AppLocalizations.of(context)!.forgot_your_password,
+                style: Theme.of(context).textTheme.bodySmall,
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 32),
+              Text(
+                AppLocalizations.of(context)!.new_user_registration,
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 12),
+              TextField(
+                decoration: InputDecoration(
+                  hintText: AppLocalizations.of(context)!.hint_email,
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 16),
+              SizedBox(
+                width: double.infinity,
+                height: 48,
+                child: ElevatedButton(
+                  onPressed: () {},
+                  style: ElevatedButton.styleFrom(
+                    textStyle: TextStyle(
+                      fontSize: 14,
+                    ),
+                  ),
+                  child: Text(AppLocalizations.of(context)!.sign_up_with_email),
+                ),
+              ),
+              const SizedBox(height: 24),
+              Row(
+                children: [
+                  Expanded(child: Divider()),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 8),
+                    child: Text(AppLocalizations.of(context)!.or_continue_with),
+                  ),
+                  Expanded(child: Divider()),
+                ],
+              ),
+              const SizedBox(height: 16),
+              SizedBox(
+                width: double.infinity,
+                height: 48,
+                child: ElevatedButton.icon(
+                  style:
+                      Theme.of(
+                        context,
+                      ).extension<AppButtonThemes>()!.googleButtonTheme,
+                  onPressed: () {},
+                  icon: SvgPicture(SvgAssetLoader(Assets.svgsGoogle)),
+                  label: Text(AppLocalizations.of(context)!.google),
+                ),
+              ),
+            ],
+          ),
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: 0,
+        selectedItemColor: Colors.black,
+        unselectedItemColor: Colors.grey,
+        items: const [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.confirmation_number_outlined),
+            label: '',
+          ),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: ''),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.notifications_none),
+            label: '',
+          ),
+          BottomNavigationBarItem(icon: Icon(Icons.menu), label: ''),
+        ],
       ),
     );
   }
 }
-
-// features/auth/presentation/login_form.dart
-class LoginForm extends StatelessWidget {
-  const LoginForm({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    final NavigationService navigationService = getIt<NavigationService>();
-
-    return BlocConsumer<AuthenticationCubit, LoginState>(
-      listener: (context, state) {
-        if (state is LoginSuccess) {
-          // Điều hướng hoặc xử lý sau khi login thành công
-          Navigator.pushReplacementNamed(context, '/home');
-        }
-        if (state is LoginFailure) {
-          // Hiển thị lỗi
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text(state.message)),
-          );
-        }
-      },
-      builder: (context, state) {
-        if (state is LoginLoading) {
-          return Center(child: CircularProgressIndicator());
-        }
-        return Column(
-          children: [
-            TextField(
-              // Nhập username
-            ),
-            TextField(
-              // Nhập password
-            ),
-            ElevatedButton(
-              onPressed: () {
-                final username = 'user';
-                final password = 'pass';
-                // context.read<AuthenticationCubit>().login(username, password);
-                navigationService.replaceWith(AppRoutes.home);
-              },
-              child: Text("Login"),
-            ),
-          ],
-        );
-      },
-    );
-  }
-}
-

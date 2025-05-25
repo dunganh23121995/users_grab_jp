@@ -40,9 +40,9 @@ class MyApp extends StatelessWidget {
         Locale('en', 'US'),
         // Locale('vi', 'VN'),
       ],
-      locale: Locale('en'),
+      locale: Locale('ja'),
       navigatorKey: getIt<NavigationService>().navigatorKey,
-      theme: AppTheme.blueTheme,
+      theme: AppTheme.lightTheme,
       initialRoute: AppRoutes.splash,
       routes: {
         AppRoutes.splash: (_) => SplashScreen(),

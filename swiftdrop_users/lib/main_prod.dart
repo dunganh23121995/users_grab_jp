@@ -42,7 +42,7 @@ class MyApp extends StatelessWidget {
       ],
       locale: Locale('ja'),
       navigatorKey: getIt<NavigationService>().navigatorKey,
-      theme: AppTheme.blueTheme,
+      theme: AppTheme.lightTheme,
       initialRoute: AppRoutes.splash,
       routes: {
         AppRoutes.splash: (_) => SplashScreen(),

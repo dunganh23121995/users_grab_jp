@@ -2,6 +2,21 @@
 class Assets {
   Assets._();
 
+  static const String imagesBell = 'assets/images/bell.png';
+  static const String imagesBellNotification = 'assets/images/bell_notification.png';
+  static const String imagesCoupon = 'assets/images/coupon.png';
+  static const String imagesDrawerMenu = 'assets/images/drawer_menu.png';
+  static const String imagesGoogle = 'assets/images/Google.png';
+  static const String imagesHome = 'assets/images/home.png';
+  static const String imagesMenu = 'assets/images/menu.png';
+  static const String imagesUser = 'assets/images/user.png';
   static const String imagesUserLogoRemovebgPreview = 'assets/images/user_logo-removebg-preview.png';
+  static const String svgsBell = 'assets/svgs/bell.svg';
+  static const String svgsCoupon = 'assets/svgs/coupon.svg';
+  static const String svgsDrawerMenu = 'assets/svgs/drawer_menu.svg';
+  static const String svgsGoogle = 'assets/svgs/Google.svg';
+  static const String svgsHome = 'assets/svgs/home.svg';
+  static const String svgsMenu = 'assets/svgs/menu.svg';
+  static const String svgsPersonal = 'assets/svgs/personal.svg';
 
 }

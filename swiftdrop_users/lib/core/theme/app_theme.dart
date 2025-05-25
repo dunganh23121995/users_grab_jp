@@ -1,37 +1,119 @@
 import 'package:flutter/material.dart';
 
+import 'app_button_theme.dart';
+import 'app_color.dart';
+
 // Custom Theme 1: Green Theme
 class AppTheme {
-  static const Color greenPrimaryColor = Colors.green;
-  static const Color greenAccentColor = Colors.greenAccent;
-  static const Color greenBackgroundColor = Colors.white;
-
-  static const Color textColor = Colors.black;
-
   // Light Theme
-  static ThemeData greenTheme = ThemeData(
+  static ThemeData lightTheme = ThemeData(
     brightness: Brightness.light,
-    primaryColor: greenPrimaryColor,
+    extensions: <ThemeExtension<dynamic>>[
+      AppButtonThemes(
+        elevatedActiveButtonTheme: ElevatedButton.styleFrom(
+          backgroundColor: color000000,
+          foregroundColor: colorFFFFFF,
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+        ),
+        elevatedDisableButtonTheme: ElevatedButton.styleFrom(
+          backgroundColor: colorBBBBBB,
+          foregroundColor: colorFFFFFF,
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+        ),
+        googleButtonTheme: ElevatedButton.styleFrom(
+          backgroundColor: colorEEEEEE,
+          foregroundColor: color000000,
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+        ),
+      ),
+    ],
+    primaryColor: Colors.white,
     colorScheme: ColorScheme.light(
-      primary: greenPrimaryColor,
-      secondary: greenAccentColor,
-      background: greenBackgroundColor,
+      primary: colorFFFFFF,
+      secondary: colorE0E0E0,
     ),
-    scaffoldBackgroundColor: greenBackgroundColor,
+    inputDecorationTheme: InputDecorationTheme(
+      hintStyle: TextStyle(color: Colors.grey),
+      filled: true,
+      fillColor: Colors.white,
+      contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(8),
+        borderSide: BorderSide(color: colorDFDFDF, width: 1),
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(10),
+        borderSide: BorderSide(color: colorDFDFDF, width: 1),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(10),
+        borderSide: BorderSide(color: colorBBBBBB, width: 1.5),
+      ),
+      suffixStyle: TextStyle(
+        color: const Color(0xFF828282),
+        fontSize: 14,
+        fontFamily: 'Inter',
+        fontWeight: FontWeight.w400,
+        height: 1.40,
+      ),
+    ),
+    scaffoldBackgroundColor: backgroundColor,
     appBarTheme: AppBarTheme(
-      color: greenPrimaryColor,
+      color: colorFFFFFF,
       elevation: 4.0,
-      titleTextStyle: TextStyle(color: Colors.white, fontSize: 20),
+      titleTextStyle: TextStyle(
+        color: Colors.black,
+        fontSize: 20,
+        fontFamily: 'Inter',
+        fontWeight: FontWeight.w600,
+        height: 1.40,
+        letterSpacing: -0.40,
+      ),
     ),
     textTheme: TextTheme(
-      bodyLarge: TextStyle(color: textColor, fontSize: 16), // bodyText1 -> bodyLarge
-      bodyMedium: TextStyle(color: textColor.withOpacity(0.7), fontSize: 14), // bodyText2 -> bodyMedium
-      headlineLarge: TextStyle(color: textColor, fontSize: 32, fontWeight: FontWeight.bold), // headline1 -> headlineLarge
+      titleMedium: TextStyle(
+        color: Colors.black,
+        fontSize: 18,
+        fontFamily: 'Inter',
+        fontWeight: FontWeight.w700,
+        height: 1.40,
+        letterSpacing: -0.36,
+      ),
+      labelLarge: TextStyle(
+        color: Colors.black,
+        fontSize: 16,
+        fontFamily: 'Inter',
+        fontWeight: FontWeight.w700,
+        height: 1.40,
+        letterSpacing: -0.32,
+      ),
     ),
-    buttonTheme: ButtonThemeData(
-      buttonColor: greenPrimaryColor,
-      textTheme: ButtonTextTheme.primary,
+
+    // Elevated button config
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ButtonStyle(
+        backgroundColor: WidgetStateProperty.all(Colors.black),
+        foregroundColor: WidgetStateProperty.all(Colors.white),
+        textStyle: WidgetStateProperty.all(
+          TextStyle(
+            color: Colors.white,
+            fontSize: 16,
+            fontFamily: 'Inter',
+            fontWeight: FontWeight.w700,
+            height: 1.50,
+          ),
+        ),
+        shape: WidgetStateProperty.all(
+          RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+        ),
+        padding: WidgetStateProperty.all(EdgeInsets.symmetric(vertical: 12)),
+      ),
     ),
+    // Text button config
+    textButtonTheme: TextButtonThemeData(),
+
+    outlinedButtonTheme: OutlinedButtonThemeData(),
+    iconButtonTheme: IconButtonThemeData(),
   );
 
   // Dark Theme
@@ -41,7 +123,6 @@ class AppTheme {
     colorScheme: ColorScheme.dark(
       primary: greenPrimaryColor,
       secondary: greenAccentColor,
-      background: Colors.black,
     ),
     scaffoldBackgroundColor: Colors.black,
     appBarTheme: AppBarTheme(
@@ -52,7 +133,11 @@ class AppTheme {
     textTheme: TextTheme(
       bodyLarge: TextStyle(color: Colors.white, fontSize: 16),
       bodyMedium: TextStyle(color: Colors.white.withOpacity(0.7), fontSize: 14),
-      headlineLarge: TextStyle(color: Colors.white, fontSize: 32, fontWeight: FontWeight.bold),
+      headlineLarge: TextStyle(
+        color: Colors.white,
+        fontSize: 32,
+        fontWeight: FontWeight.bold,
+      ),
     ),
     buttonTheme: ButtonThemeData(
       buttonColor: greenPrimaryColor,
@@ -70,7 +155,6 @@ class AppTheme {
     colorScheme: ColorScheme.light(
       primary: bluePrimaryColor,
       secondary: blueAccentColor,
-      background: Colors.white,
     ),
     scaffoldBackgroundColor: Colors.white,
     appBarTheme: AppBarTheme(
@@ -81,11 +165,15 @@ class AppTheme {
     textTheme: TextTheme(
       bodyLarge: TextStyle(color: Colors.black, fontSize: 16),
       bodyMedium: TextStyle(color: Colors.black.withOpacity(0.7), fontSize: 14),
-      headlineLarge: TextStyle(color: Colors.black, fontSize: 32, fontWeight: FontWeight.bold),
+      headlineLarge: TextStyle(
+        color: Colors.black,
+        fontSize: 32,
+        fontWeight: FontWeight.bold,
+      ),
     ),
     buttonTheme: ButtonThemeData(
-      buttonColor: bluePrimaryColor,
-      textTheme: ButtonTextTheme.primary,
+      // buttonColor: bluePrimaryColor,
+      // textTheme: ButtonTextTheme.primary,
     ),
   );
 
@@ -106,7 +194,11 @@ class AppTheme {
     textTheme: TextTheme(
       bodyLarge: TextStyle(color: Colors.white, fontSize: 16),
       bodyMedium: TextStyle(color: Colors.white.withOpacity(0.7), fontSize: 14),
-      headlineLarge: TextStyle(color: Colors.white, fontSize: 32, fontWeight: FontWeight.bold),
+      headlineLarge: TextStyle(
+        color: Colors.white,
+        fontSize: 32,
+        fontWeight: FontWeight.bold,
+      ),
     ),
     buttonTheme: ButtonThemeData(
       buttonColor: bluePrimaryColor,

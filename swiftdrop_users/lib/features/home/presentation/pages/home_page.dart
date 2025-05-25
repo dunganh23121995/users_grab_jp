@@ -13,7 +13,7 @@ class HomeScreen extends StatelessWidget {
       ),
       body: Center(
         child: Text(
-          AppLocalizations.of(context)!.hometitle, // Nội dung hiển thị giữa màn hình
+          AppLocalizations.of(context)!.home_title, // Nội dung hiển thị giữa màn hình
           style: TextStyle(fontSize: 24),
         ),
       ),
