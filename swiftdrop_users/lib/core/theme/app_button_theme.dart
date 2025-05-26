@@ -18,8 +18,10 @@ class AppButtonThemes extends ThemeExtension<AppButtonThemes> {
     ButtonStyle? googleButtonTheme,
   }) {
     return AppButtonThemes(
-      elevatedActiveButtonTheme: elevatedActiveButtonTheme ?? this.elevatedActiveButtonTheme,
-      elevatedDisableButtonTheme: elevatedDisableButtonTheme ?? this.elevatedDisableButtonTheme,
+      elevatedActiveButtonTheme:
+          elevatedActiveButtonTheme ?? this.elevatedActiveButtonTheme,
+      elevatedDisableButtonTheme:
+          elevatedDisableButtonTheme ?? this.elevatedDisableButtonTheme,
       googleButtonTheme: googleButtonTheme ?? this.googleButtonTheme,
     );
   }
@@ -28,9 +30,20 @@ class AppButtonThemes extends ThemeExtension<AppButtonThemes> {
   AppButtonThemes lerp(ThemeExtension<AppButtonThemes>? other, double t) {
     if (other is! AppButtonThemes) return this;
     return AppButtonThemes(
-      elevatedActiveButtonTheme: ButtonStyle.lerp(elevatedActiveButtonTheme, other.elevatedActiveButtonTheme, t)!,
-      elevatedDisableButtonTheme: ButtonStyle.lerp(elevatedDisableButtonTheme, other.elevatedDisableButtonTheme, t)!,
-      googleButtonTheme: ButtonStyle.lerp(googleButtonTheme, other.googleButtonTheme, t)!,
+      elevatedActiveButtonTheme:
+          ButtonStyle.lerp(
+            elevatedActiveButtonTheme,
+            other.elevatedActiveButtonTheme,
+            t,
+          )!,
+      elevatedDisableButtonTheme:
+          ButtonStyle.lerp(
+            elevatedDisableButtonTheme,
+            other.elevatedDisableButtonTheme,
+            t,
+          )!,
+      googleButtonTheme:
+          ButtonStyle.lerp(googleButtonTheme, other.googleButtonTheme, t)!,
     );
   }
 }

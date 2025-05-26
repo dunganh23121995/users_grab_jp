@@ -28,7 +28,10 @@ class AppTheme {
       ),
     ],
     primaryColor: Colors.white,
-    colorScheme: ColorScheme.light(primary: colorFFFFFF, secondary: colorE0E0E0),
+    colorScheme: ColorScheme.light(
+      primary: colorFFFFFF,
+      secondary: colorE0E0E0,
+    ),
     inputDecorationTheme: InputDecorationTheme(
       hintStyle: TextStyle(color: Colors.grey),
       filled: true,
@@ -92,9 +95,17 @@ class AppTheme {
         backgroundColor: WidgetStateProperty.all(Colors.black),
         foregroundColor: WidgetStateProperty.all(Colors.white),
         textStyle: WidgetStateProperty.all(
-          TextStyle(color: Colors.white, fontSize: 16, fontFamily: 'Inter', fontWeight: FontWeight.w700, height: 1.50),
+          TextStyle(
+            color: Colors.white,
+            fontSize: 16,
+            fontFamily: 'Inter',
+            fontWeight: FontWeight.w700,
+            height: 1.50,
+          ),
         ),
-        shape: WidgetStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))),
+        shape: WidgetStateProperty.all(
+          RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+        ),
         padding: WidgetStateProperty.all(EdgeInsets.symmetric(vertical: 12)),
       ),
     ),
@@ -109,7 +120,10 @@ class AppTheme {
   static ThemeData greenDarkTheme = ThemeData(
     brightness: Brightness.dark,
     primaryColor: greenPrimaryColor,
-    colorScheme: ColorScheme.dark(primary: greenPrimaryColor, secondary: greenAccentColor),
+    colorScheme: ColorScheme.dark(
+      primary: greenPrimaryColor,
+      secondary: greenAccentColor,
+    ),
     scaffoldBackgroundColor: Colors.black,
     appBarTheme: AppBarTheme(
       color: greenPrimaryColor,
@@ -119,9 +133,16 @@ class AppTheme {
     textTheme: TextTheme(
       bodyLarge: TextStyle(color: Colors.white, fontSize: 16),
       bodyMedium: TextStyle(color: Colors.white.withOpacity(0.7), fontSize: 14),
-      headlineLarge: TextStyle(color: Colors.white, fontSize: 32, fontWeight: FontWeight.bold),
+      headlineLarge: TextStyle(
+        color: Colors.white,
+        fontSize: 32,
+        fontWeight: FontWeight.bold,
+      ),
     ),
-    buttonTheme: ButtonThemeData(buttonColor: greenPrimaryColor, textTheme: ButtonTextTheme.primary),
+    buttonTheme: ButtonThemeData(
+      buttonColor: greenPrimaryColor,
+      textTheme: ButtonTextTheme.primary,
+    ),
   );
 
   // Another Custom Theme: Blue Theme
@@ -131,7 +152,10 @@ class AppTheme {
   static ThemeData blueTheme = ThemeData(
     brightness: Brightness.light,
     primaryColor: bluePrimaryColor,
-    colorScheme: ColorScheme.light(primary: bluePrimaryColor, secondary: blueAccentColor),
+    colorScheme: ColorScheme.light(
+      primary: bluePrimaryColor,
+      secondary: blueAccentColor,
+    ),
     scaffoldBackgroundColor: Colors.white,
     appBarTheme: AppBarTheme(
       color: bluePrimaryColor,
@@ -141,7 +165,11 @@ class AppTheme {
     textTheme: TextTheme(
       bodyLarge: TextStyle(color: Colors.black, fontSize: 16),
       bodyMedium: TextStyle(color: Colors.black.withOpacity(0.7), fontSize: 14),
-      headlineLarge: TextStyle(color: Colors.black, fontSize: 32, fontWeight: FontWeight.bold),
+      headlineLarge: TextStyle(
+        color: Colors.black,
+        fontSize: 32,
+        fontWeight: FontWeight.bold,
+      ),
     ),
     buttonTheme: ButtonThemeData(
       // buttonColor: bluePrimaryColor,
@@ -152,7 +180,11 @@ class AppTheme {
   static ThemeData blueDarkTheme = ThemeData(
     brightness: Brightness.dark,
     primaryColor: bluePrimaryColor,
-    colorScheme: ColorScheme.dark(primary: bluePrimaryColor, secondary: blueAccentColor, background: Colors.black),
+    colorScheme: ColorScheme.dark(
+      primary: bluePrimaryColor,
+      secondary: blueAccentColor,
+      background: Colors.black,
+    ),
     scaffoldBackgroundColor: Colors.black,
     appBarTheme: AppBarTheme(
       color: bluePrimaryColor,
@@ -162,8 +194,15 @@ class AppTheme {
     textTheme: TextTheme(
       bodyLarge: TextStyle(color: Colors.white, fontSize: 16),
       bodyMedium: TextStyle(color: Colors.white.withOpacity(0.7), fontSize: 14),
-      headlineLarge: TextStyle(color: Colors.white, fontSize: 32, fontWeight: FontWeight.bold),
+      headlineLarge: TextStyle(
+        color: Colors.white,
+        fontSize: 32,
+        fontWeight: FontWeight.bold,
+      ),
     ),
-    buttonTheme: ButtonThemeData(buttonColor: bluePrimaryColor, textTheme: ButtonTextTheme.primary),
+    buttonTheme: ButtonThemeData(
+      buttonColor: bluePrimaryColor,
+      textTheme: ButtonTextTheme.primary,
+    ),
   );
 }

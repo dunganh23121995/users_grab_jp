@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+import '../../../../core/l10n/generated/app_localizations.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -12,7 +13,9 @@ class HomeScreen extends StatelessWidget {
       ),
       body: Center(
         child: Text(
-          AppLocalizations.of(context)!.home_title, // Nội dung hiển thị giữa màn hình
+          AppLocalizations.of(
+            context,
+          )!.home_title, // Nội dung hiển thị giữa màn hình
           style: TextStyle(fontSize: 24),
         ),
       ),

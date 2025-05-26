@@ -12,7 +12,6 @@ final class LanguageInitial extends LanguageState {
   LanguageInitial() : super(state: null);
 }
 
-
-final class ChangeLanguage extends LanguageState{
+final class ChangeLanguage extends LanguageState {
   ChangeLanguage({required super.state});
 }

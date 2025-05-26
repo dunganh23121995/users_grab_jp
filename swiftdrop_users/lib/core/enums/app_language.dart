@@ -5,11 +5,12 @@ enum AppLanguage {
   japanese(Locale('ja'));
 
   final Locale locale;
+
   const AppLanguage(this.locale);
 
   AppLanguage fromLocale(Locale locale) {
     return AppLanguage.values.firstWhere(
-          (lang) => lang.locale.languageCode == locale.languageCode,
+      (lang) => lang.locale.languageCode == locale.languageCode,
       orElse: () => AppLanguage.english, // fallback
     );
   }

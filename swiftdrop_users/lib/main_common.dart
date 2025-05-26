@@ -6,11 +6,11 @@ import 'package:swiftdrop_users/core/navigation/navigation_service.dart';
 import 'package:swiftdrop_users/core/theme/app_theme.dart';
 import 'package:swiftdrop_users/features/splash/presentation/pages/splash_page.dart';
 import 'core/enums/app_language.dart';
+import 'core/l10n/generated/app_localizations.dart';
 import 'features/home/presentation/pages/home_page.dart';
 import 'features/login/presentation/pages/login_page.dart';
 import 'injection_container/global_injector.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -25,9 +25,9 @@ class MyApp extends StatelessWidget {
         ),
       ],
       child: BlocBuilder<LanguageCubit, LanguageState>(
-        buildWhen: (oldState,newState){
-          return oldState.language!= newState.language;
-      },
+        buildWhen: (oldState, newState) {
+          return oldState.language != newState.language;
+        },
         builder: (context, stateLanguage) {
           return MaterialApp(
             title: 'Flutter Demo',
@@ -38,7 +38,8 @@ class MyApp extends StatelessWidget {
               GlobalCupertinoLocalizations.delegate,
             ],
             supportedLocales: AppLanguage.values.map((e) => e.locale).toList(),
-            locale: stateLanguage.language?.locale ?? AppLanguage.japanese.locale,
+            locale:
+                stateLanguage.language?.locale ?? AppLanguage.japanese.locale,
             navigatorKey: getIt<NavigationService>().navigatorKey,
             theme: AppTheme.lightTheme,
             initialRoute: AppRoutes.splash,

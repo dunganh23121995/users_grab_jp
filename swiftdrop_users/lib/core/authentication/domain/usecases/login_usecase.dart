@@ -6,7 +6,10 @@ class LoginUseCase {
 
   LoginUseCase(this.repository);
 
-  Future<(String token, UserEntity user)> loginBase(String email, String password) {
+  Future<(String token, UserEntity user)> loginBase(
+    String email,
+    String password,
+  ) {
     return repository.login(email, password);
   }
 }

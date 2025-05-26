@@ -6,7 +6,10 @@ class LogoutUseCase {
 
   LogoutUseCase(this.repository);
 
-  Future<(String token, UserEntity user)> logout(String email, String password) {
+  Future<(String token, UserEntity user)> logout(
+    String email,
+    String password,
+  ) {
     return repository.logout();
   }
 }
