@@ -11,6 +11,8 @@ import 'injection_container/global_injector.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import 'main_common.dart';
+
 Future<void> main() async {
   // Load .env to get data for AppConfig
   await dotenv.load(fileName: 'assets/.env.stg');
@@ -19,37 +21,4 @@ Future<void> main() async {
   await GlobalInjector.setupDependencies(environment: Environment.staging);
 
   runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      localizationsDelegates: [
-        ...AppLocalizations.localizationsDelegates,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      supportedLocales: [
-        Locale('ja', 'JP'),
-        Locale('en', 'US'),
-        // Locale('vi', 'VN'),
-      ],
-      locale: Locale('ja'),
-      navigatorKey: getIt<NavigationService>().navigatorKey,
-      theme: AppTheme.lightTheme,
-      initialRoute: AppRoutes.splash,
-      routes: {
-        AppRoutes.splash: (_) => SplashScreen(),
-        AppRoutes.login: (_) => LoginScreen(),
-        AppRoutes.home: (_) => HomeScreen(),
-      },
-      // home: const SplashScreen(),
-    );
-  }
 }
