@@ -14,4 +14,13 @@ enum AppLanguage {
       orElse: () => AppLanguage.english, // fallback
     );
   }
+
+  String getName() {
+    switch (this) {
+      case AppLanguage.english:
+        return 'EN';
+      case AppLanguage.japanese:
+        return 'JP';
+    }
+  }
 }

@@ -19,14 +19,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-      providers: [
-        BlocProvider<LanguageCubit>(
-          create: (BuildContext context) => LanguageCubit(),
-        ),
-      ],
+      providers: [BlocProvider<LanguageCubit>(create: (BuildContext context) => LanguageCubit())],
       child: BlocBuilder<LanguageCubit, LanguageState>(
         buildWhen: (oldState, newState) {
-          return oldState.language != newState.language;
+          return oldState != newState;
         },
         builder: (context, stateLanguage) {
           return MaterialApp(
@@ -38,8 +34,7 @@ class MyApp extends StatelessWidget {
               GlobalCupertinoLocalizations.delegate,
             ],
             supportedLocales: AppLanguage.values.map((e) => e.locale).toList(),
-            locale:
-                stateLanguage.language?.locale ?? AppLanguage.japanese.locale,
+            locale: stateLanguage.language?.locale ?? AppLanguage.japanese.locale,
             navigatorKey: getIt<NavigationService>().navigatorKey,
             theme: AppTheme.lightTheme,
             initialRoute: AppRoutes.splash,
